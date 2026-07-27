@@ -14,14 +14,14 @@ def chat():
         "response": f"You said: {data['message']}"
     })
 
-@app.route ("/settings", methods=["GET"])
+@app.route("/settings", methods=["GET"])
 def settings():
     return jsonify({
-        "bot_name": "AaronBot"
+        "bot_name": "AaronBot",
         "version": "1.0"
     })
 
-@app.route ("/health", methods=["GET"])
+@app.route("/health", methods=["GET"])
 def health():
     return jsonify({
         "status": "ok"
