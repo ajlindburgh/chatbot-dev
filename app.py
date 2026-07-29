@@ -21,6 +21,13 @@ def settings():
         "version": "1.0"
     })
 
+@app.route("/gotosleep", methods=["GET"])
+def gotosleep():
+    time.sleep(10)
+    return jsonify({
+        "message"="Did this work?"
+        })
+    
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({
