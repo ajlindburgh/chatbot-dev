@@ -25,7 +25,7 @@ def settings():
 def gotosleep():
     time.sleep(10)
     return jsonify({
-        "message"="Did this work?"
+        "message": "Did this work?"
         })
     
 @app.route("/health", methods=["GET"])
