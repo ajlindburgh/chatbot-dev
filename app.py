@@ -32,9 +32,11 @@ def gotosleep():
 @app.route("/wait", methods=["POST"])
 def wait():
     data = request.json
+    phone = request.json.get("phone")
     time.sleep(15)
     return jsonify({
-        "response": f"I have recorded {data['message']}"
+        "response": f"I have recorded {phone}",
+        "state": f"I am reporting {data['message']}"
     })
 
 @app.route("/health", methods=["GET"])
