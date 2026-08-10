@@ -28,7 +28,15 @@ def gotosleep():
     return jsonify({
         "message": "Did this work?"
         })
-    
+
+@app.route("/wait", methods=["POST"])
+def wait():
+    data = request.json
+    time.sleep(15)
+    return jsonify({
+        "response": f"I have recorded {data['message']}"
+    })
+
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({
