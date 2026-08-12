@@ -35,7 +35,7 @@ def wait():
     phone = request.json.get("phone")
     time.sleep(15)
     return jsonify({
-        "response": f"I have recorded {phone}",
+        "response": f"I have just recorded {phone}",
         "state": f"I am reporting {data['message']}"
     })
 
