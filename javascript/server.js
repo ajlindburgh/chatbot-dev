@@ -26,7 +26,7 @@ app.get("/gotosleep", async (req, res) => {
     await new Promise(resolve => setTimeout(resolve, 10000));
 
     res.json({
-        message: "Did this work?"
+        message: "don't be a toolbox."
     });
 });
 
