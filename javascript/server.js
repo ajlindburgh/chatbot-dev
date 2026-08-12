@@ -48,3 +48,5 @@ app.get("/health", (req, res) => {
         status: "ok"
     });
 });
+
+app.listen();
