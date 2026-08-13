@@ -51,7 +51,7 @@ app.post("/agent", async (req,res) => {
         success: 'true',
         agentQueue: 'Escalation',
         estimatedWait: 15
-    }):
+    });
 });
 
 app.get("/health", (req, res) => {
