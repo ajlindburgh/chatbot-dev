@@ -43,6 +43,17 @@ app.post("/wait", async (req, res) => {
     });
 });
 
+app.post("/agent", async (req,res) => {
+    
+    const data = req.body;
+
+    res.json({
+        success: 'true',
+        agentQueue: 'Escalation',
+        estimatedWait: 15
+    }):
+});
+
 app.get("/health", (req, res) => {
     res.json({
         status: "ok"
