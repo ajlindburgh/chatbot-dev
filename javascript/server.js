@@ -54,9 +54,9 @@ app.post("/random", (req, res) => {
   }
 
   if (roll < 0.9) {
-    return res.status(429).json({
-      status: "rate_limited",
-      message: "Too many requests. Please retry later."
+    return res.status(404).json({
+      status: "not_found",
+      message: "Far end does not exist."
     });
   }
 
