@@ -43,6 +43,29 @@ app.post("/wait", async (req, res) => {
     });
 });
 
+app.post("/random", (req, res) => {
+  const roll = Math.random();
+
+  if (roll < 0.75) {
+    return res.status(200).json({
+      status: "success",
+      message: "Request processed successfully."
+    });
+  }
+
+  if (roll < 0.9) {
+    return res.status(429).json({
+      status: "rate_limited",
+      message: "Too many requests. Please retry later."
+    });
+  }
+
+  return res.status(500).json({
+    status: "error",
+    message: "Internal server error."
+  });
+});
+
 app.post("/agent", async (req,res) => {
     
     const data = req.body;
