@@ -110,9 +110,9 @@ app.post("/validate", (req, res) => {
     .replace(/\D/g, "");
 
   // Validate input formats.
-  const zipIsValidFormat = /^\d{5}$/.test(zip);
-  const dobIsValidFormat = /^\d{8}$/.test(dob);
-  const ssnIsValidFormat = /^\d{4}$/.test(ssn);
+  const zipIsValidFormat = /^\d{5}$/.test(CUSTOMER_ZIP_CODE);
+  const dobIsValidFormat = /^\d{8}$/.test(CUSTOMER_DOB);
+  const ssnIsValidFormat = /^\d{4}$/.test(CUSTOMER_LAST_4_SSN);
 
   let isConfirmed = false;
 
