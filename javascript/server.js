@@ -106,13 +106,13 @@ app.post("/validate", (req, res) => {
   const dob = String(body.dob || "")
     .replace(/\D/g, "");
 
-  const ssnLast4 = String(body.ssnLast4 || "")
+  const ssnLast4 = String(body.ssn || "")
     .replace(/\D/g, "");
 
   // Validate input formats.
   const zipIsValidFormat = /^\d{5}$/.test(zip);
   const dobIsValidFormat = /^\d{8}$/.test(dob);
-  const ssnLast4IsValidFormat = /^\d{4}$/.test(ssnLast4);
+  const ssnLast4IsValidFormat = /^\d{4}$/.test(ssn);
 
   let isConfirmed = false;
 
@@ -130,7 +130,7 @@ app.post("/validate", (req, res) => {
         dobIsValidFormat &&
         ssnLast4IsValidFormat &&
         dob === "02151978" &&
-        ssnLast4 === "4444";
+        ssn === "4444";
       break;
 
     case "ZIP_SSN4":
@@ -138,7 +138,7 @@ app.post("/validate", (req, res) => {
         zipIsValidFormat &&
         ssnLast4IsValidFormat &&
         zip === "47303" &&
-        ssnLast4 === "4444";
+        ssn === "4444";
       break;
 
     default:
