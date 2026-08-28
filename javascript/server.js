@@ -121,24 +121,24 @@ app.post("/validate", (req, res) => {
       isConfirmed =
         zipIsValidFormat &&
         dobIsValidFormat &&
-        zip === "47303" &&
-        dob === "02151978";
+        zip === "55555" &&
+        dob === "05051955";
       break;
 
     case "DOB_SSN4":
       isConfirmed =
         dobIsValidFormat &&
         ssnIsValidFormat &&
-        dob === "02151978" &&
-        ssn === "4444";
+        dob === "05051955" &&
+        ssn === "5555";
       break;
 
     case "ZIP_SSN4":
       isConfirmed =
         zipIsValidFormat &&
         ssnIsValidFormat &&
-        zip === "47303" &&
-        ssn === "4444";
+        zip === "55555" &&
+        ssn === "5555";
       break;
 
     default:
@@ -151,7 +151,7 @@ app.post("/validate", (req, res) => {
 
   if (isConfirmed) {
     return res.status(200).json({
-      customerId: "366",
+      customerId: "555",
       status: "CONFIRMED"
     });
   }
