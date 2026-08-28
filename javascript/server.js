@@ -100,13 +100,13 @@ app.post("/validate", (req, res) => {
     .trim()
     .toUpperCase();
 
-  const zip = String(body.zip || "")
+  const CUSTOMER_ZIP_CODE = String(body.CUSTOMER_ZIP_CODE || "")
     .replace(/\D/g, "");
 
-  const dob = String(body.dob || "")
+  const CUSTOMER_DOB = String(body.CUSTOMER_DOB || "")
     .replace(/\D/g, "");
 
-  const ssn = String(body.ssn || "")
+  const CUSTOMER_LAST_4_SSN = String(body.CUSTOMER_LAST_4_SSN || "")
     .replace(/\D/g, "");
 
   // Validate input formats.
@@ -121,24 +121,24 @@ app.post("/validate", (req, res) => {
       isConfirmed =
         zipIsValidFormat &&
         dobIsValidFormat &&
-        zip === "55555" &&
-        dob === "05051955";
+        CUSTOMER_ZIP_CODE === "55555" &&
+        CUSTOMER_DOB === "05051955";
       break;
 
     case "DOB_SSN4":
       isConfirmed =
         dobIsValidFormat &&
         ssnIsValidFormat &&
-        dob === "05051955" &&
-        ssn === "5555";
+        CUSTOMER_DOB === "05051955" &&
+        CUSTOMER_LAST_4_SSN === "5555";
       break;
 
     case "ZIP_SSN4":
       isConfirmed =
         zipIsValidFormat &&
         ssnIsValidFormat &&
-        zip === "55555" &&
-        ssn === "5555";
+        CUSTOMER_ZIP_CODE === "55555" &&
+        CUSTOMER_LAST_4_SSN === "5555";
       break;
 
     default:
