@@ -91,6 +91,77 @@ app.get("/health", (req, res) => {
     });
 });
 
+// a validation tool
+app.post("/validate", (req, res) => {
+  const body = req.body || {};
+
+  // Keep all input values as strings to preserve leading zeros.
+  const method = String(body.method || "")
+    .trim()
+    .toUpperCase();
+
+  const zip = String(body.zip || "")
+    .replace(/\D/g, "");
+
+  const dob = String(body.dob || "")
+    .replace(/\D/g, "");
+
+  const ssnLast4 = String(body.ssnLast4 || "")
+    .replace(/\D/g, "");
+
+  // Validate input formats.
+  const zipIsValidFormat = /^\d{5}$/.test(zip);
+  const dobIsValidFormat = /^\d{8}$/.test(dob);
+  const ssnLast4IsValidFormat = /^\d{4}$/.test(ssnLast4);
+
+  let isConfirmed = false;
+
+  switch (method) {
+    case "ZIP_DOB":
+      isConfirmed =
+        zipIsValidFormat &&
+        dobIsValidFormat &&
+        zip === "47303" &&
+        dob === "02151978";
+      break;
+
+    case "DOB_SSN4":
+      isConfirmed =
+        dobIsValidFormat &&
+        ssnLast4IsValidFormat &&
+        dob === "02151978" &&
+        ssnLast4 === "4444";
+      break;
+
+    case "ZIP_SSN4":
+      isConfirmed =
+        zipIsValidFormat &&
+        ssnLast4IsValidFormat &&
+        zip === "47303" &&
+        ssnLast4 === "4444";
+      break;
+
+    default:
+      return res.status(400).json({
+        customerId: "unconfirmed",
+        status: "ERROR",
+        errorCode: "INVALID_VERIFICATION_METHOD"
+      });
+  }
+
+  if (isConfirmed) {
+    return res.status(200).json({
+      customerId: "366",
+      status: "CONFIRMED"
+    });
+  }
+
+  return res.status(200).json({
+    customerId: "unconfirmed",
+    status: "UNCONFIRMED"
+  });
+});
+    
 const PORT = process.env.PORT;
 
 app.listen(PORT);
