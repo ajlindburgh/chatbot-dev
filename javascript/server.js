@@ -151,13 +151,18 @@ app.post("/validate", (req, res) => {
 
   if (isConfirmed) {
     return res.status(200).json({
-      customerId: "555",
-      status: "CONFIRMED"
+      MRN: "620944759",
+      memberFirstName: "JOHN",
+      memberMiddleName: "T",
+      memberLastName: "HURT",
+      AUTH_METHOD: "STUB",
+      COG_AUTHENTICATED: "true",
+      authenticatedCaller: "true",
     });
   }
 
   return res.status(200).json({
-    customerId: "unconfirmed",
+    MRN: "unconfirmed",
     status: "UNCONFIRMED"
   });
 });
